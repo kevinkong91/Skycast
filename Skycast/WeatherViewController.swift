@@ -138,6 +138,10 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, BEMSim
         
         
         // Nav
+        
+        
+        // Onboarding
+        
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "info")?.imageWithRenderingMode(.AlwaysTemplate), style: .Plain, target: self, action: #selector(WeatherViewController.showTutorial))
         navigationItem.rightBarButtonItem = rightBarButton
 
@@ -340,11 +344,20 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, BEMSim
         
         
         
-        // Show tutorial to onboard User
-        if !Weather.isUserOnboarded() {
-            NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(WeatherViewController.showTutorial), userInfo: nil, repeats: false)
-        }
         
+        
+        // If user is loading the app for the first time,
+        // show the tutorial overlay
+        
+        if !Weather.isUserOnboarded() {
+            
+            // Set userOnboarded as true
+            Weather.userIsOnboarded()
+            
+            showTutorial()
+            
+
+        }
         
 
     }

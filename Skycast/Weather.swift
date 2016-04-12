@@ -111,6 +111,8 @@ class Weather {
     
     // MARK: Tutorial of UX
     
+    
+    // Check if user has already been onboarded
     class func isUserOnboarded() -> Bool {
         
         if let userOnboarded = NSUserDefaults.standardUserDefaults().boolForKey("userOnboarded") as Bool? {
@@ -119,6 +121,11 @@ class Weather {
             return false
         }
         
+    }
+    
+    // Set user as onboarded (first load of the app)
+    class func userIsOnboarded() {
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "userOnboarded")
     }
     
     
